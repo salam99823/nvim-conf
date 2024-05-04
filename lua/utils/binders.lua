@@ -3,26 +3,26 @@
 local map = vim.keymap.set
 
 -- Normal mode keybinding setter
-function nm(key, command) 
+function Nm(key, command) 
 	map('n', key, command, {noremap = true})
 end
 
 -- Input mode keybinding setter
-function im(key, command)
+function Im(key, command)
 	map('i', key, command, {noremap = true})
 end
 
 -- Visual mode keybinding setter
-function vm(key, command)
+function Vm(key, command)
 	map('v', key, command, {noremap = true})
 end
 
 -- Terminal mode keybinding setter
-function tm(key, command)
+function Tm(key, command)
 	map('t', key, command, {noremap = true})
 end
 
 -- Utility map
-function um(mode, key, callback)
+function Um(mode, key, callback)
 	vim.keymap.set(mode, 'lhs', callback, {noremap = true, expr = true})
 end

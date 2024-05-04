@@ -1,3 +1,8 @@
+--[[
+  File: neotree.lua
+  Description: Configuration of neo-tree
+  See: https://github.com/nvim-neo-tree/neo-tree.nvim
+]]
 local neotree = require("neo-tree")
 
 neotree.setup({

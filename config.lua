@@ -121,7 +121,7 @@ nvim_lsp.tsserver.setup({
 })
 
 -- Stylelint format after save
-require 'lspconfig'.stylelint_lsp.setup {
+require 'lua.plug.lspconf'.stylelint_lsp.setup {
     settings = {
         stylelintplus = {
             autoFixOnSave = true,

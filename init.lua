@@ -16,8 +16,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require('lazy').setup('plugins')
 
-vim.cmd.colorscheme('monokai-pro-classic')
-
 require 'settings'
 require 'neovide'
 require 'bindings'
+
+vim.cmd.colorscheme('monokai-pro-classic')

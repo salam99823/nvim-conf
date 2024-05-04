@@ -1,3 +1,8 @@
+--[[
+    File: monokai-pro.lua
+    Description: Monokai-pro color scheme configuration
+    See: https://github.com/loctvl842/monokai-pro.nvim
+]]
 require("monokai-pro").setup({
   transparent_background = false,
   terminal_colors = true,

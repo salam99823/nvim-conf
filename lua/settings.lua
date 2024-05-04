@@ -1,6 +1,6 @@
 --[[
-  File: settings.lua
-  Description: Base settings for neovim
+    File: settings.lua
+    Description: Base settings for neovim
 ]]
 
 require "utils/aliases"
