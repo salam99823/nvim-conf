@@ -3,7 +3,7 @@
 local map = vim.keymap.set
 
 -- Normal mode keybinding setter
-function Nm(key, command) 
+function Nm(key, command)
 	map('n', key, command, {noremap = true})
 end
 
@@ -24,5 +24,5 @@ end
 
 -- Utility map
 function Um(mode, key, callback)
-	vim.keymap.set(mode, 'lhs', callback, {noremap = true, expr = true})
+	map(mode, key, callback, {noremap = true, expr = true})
 end

@@ -31,49 +31,23 @@ return {
     {
         "williamboman/mason.nvim",
         dependencies = {
-            {
-                "williamboman/mason-lspconfig.nvim", -- LSP
-                dependencies = {
-                    "neovim/nvim-lspconfig",
-                },
-                config = function()
-                    require "plug.lspconf"
-                end
-            },
+            "williamboman/mason-lspconfig.nvim", -- LSP
+            "neovim/nvim-lspconfig",
 
-            {
-                "rcarriga/nvim-dap-ui", -- DAP
-                dependencies = {
-                    "mfussenegger/nvim-dap",
-                    "nvim-neotest/nvim-nio",
-                    {
-                        "LiadOz/nvim-dap-repl-highlights",
-                        dependencies = {
-                            "nvim-treesitter/nvim-treesitter",
-                        },
-                    },
-                },
-                config = function()
-                    require "plug.dap"
-                end
-            },
+            "rcarriga/nvim-dap-ui", -- DAP
+            "mfussenegger/nvim-dap",
+            "nvim-neotest/nvim-nio",
+            "LiadOz/nvim-dap-repl-highlights",
 
-            {
-                "mfussenegger/nvim-lint", -- Linter
-                config = function()
-                    require "plug.lint"
-                end
-            },
-
-            {
-                "mhartington/formatter.nvim", -- Formatter
-                config = function()
-                    require "plug.formatter"
-                end
-            },
+            "mfussenegger/nvim-lint", -- Linter
+            "mhartington/formatter.nvim", -- Formatter
         },
         config = function()
-            require "plug.mason"
+            require("plug.mason")
+            require("plug.lspconf")
+            require "plug.formatter"
+            require "plug.lint"
+            require "plug.dap"
         end
     },
 
@@ -142,5 +116,18 @@ return {
         config = function()
             require "plug.treesitter"
         end
-    }
+    },
+
+    {
+        "nvim-neotest/neotest",
+        dependencies = {
+            "nvim-neotest/nvim-nio",
+            "nvim-lua/plenary.nvim",
+            "antoinemadec/FixCursorHold.nvim",
+            "nvim-treesitter/nvim-treesitter"
+        },
+        config = function ()
+            require("plug.neotest")
+        end
+    },
 }

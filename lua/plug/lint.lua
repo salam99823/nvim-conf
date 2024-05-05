@@ -5,4 +5,4 @@
 ]]
 local lint = require("lint")
 
-lint.setup()
+
