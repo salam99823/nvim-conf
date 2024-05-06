@@ -24,8 +24,8 @@ Opt.pumblend = 0
 
 -- Tabs {{{
 Opt.expandtab = true                -- Use spaces by default
-Opt.shiftwidth = 4                  -- Set amount of space characters, when we press "<" or ">"
-Opt.tabstop = 4                     -- 1 tab equal 4 spaces
+Opt.shiftwidth = 2                  -- Set amount of space characters, when we press "<" or ">"
+Opt.tabstop = 2                     -- 1 tab equal 2 spaces
 Opt.smartindent = true              -- Turn on smart indentation. See in the docs for more info
 Opt.autoindent = true
 -- }}}
@@ -62,16 +62,4 @@ Opt.wildmode = "longest:full,full"
 Opt.swapfile = false
 Opt.backup = false
 Opt.writebackup = false
--- }}}
-
--- Default Plugins {{{
-local disabled_built_ins = {
-    "2html_plugin",
-    "logipat",
-    "matchit"
-}
-
-for _, plugin in pairs(disabled_built_ins) do
-    G["loaded_" .. plugin] = 1
-end
 -- }}}
