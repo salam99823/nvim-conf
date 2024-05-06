@@ -33,7 +33,7 @@ require('lualine').setup {
     inactive_sections = {
         lualine_a = { 'mode' },
         lualine_b = {},
-        lualine_c = { 'filename' },
+        lualine_c = {},
         lualine_x = { 'location' },
         lualine_y = {},
         lualine_z = {}

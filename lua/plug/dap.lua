@@ -3,7 +3,7 @@
     Description: DAP plugin configuration
     See: https://github.com/mfussenegger/nvim-dap
 ]]
-require "utils/aliases"
+require "utils.aliases"
 local dap = require("dap")
 
 dap.adapters.gdb = {
@@ -18,7 +18,7 @@ dap.configurations.c = {
     type = "gdb",
     request = "launch",
     program = function()
-      return fn.input('Path to executable: ', fn.getcwd() .. '/', 'file')
+      return Fn.input('Path to executable: ', Fn.getcwd() .. '/', 'file')
     end,
     cwd = "${workspaceFolder}",
     stopAtBeginningOfMainSubprogram = false,

@@ -1,4 +1,4 @@
-require "utils/aliases"
+require "utils.aliases"
 
 return {
     {
@@ -40,14 +40,15 @@ return {
             "LiadOz/nvim-dap-repl-highlights",
 
             "mfussenegger/nvim-lint", -- Linter
+
             "mhartington/formatter.nvim", -- Formatter
         },
         config = function()
             require("plug.mason")
             require("plug.lspconf")
-            require "plug.formatter"
-            require "plug.lint"
-            require "plug.dap"
+            require("plug.formatter")
+            require("plug.lint")
+            require("plug.dap")
         end
     },
 
@@ -65,7 +66,7 @@ return {
             'rafamadriz/friendly-snippets',
         },
         config = function()
-            require "plug.cmp"
+            require("plug.cmp")
         end
     },
 
@@ -75,7 +76,7 @@ return {
             "nvim-tree/nvim-web-devicons",
         },
         config = function()
-            require "plug.trouble"
+            require("plug.trouble")
         end
     },
 
@@ -89,7 +90,7 @@ return {
             "nvim-telescope/telescope-fzy-native.nvim",
         },
         config = function()
-            require "plug.telescope"
+            require("plug.telescope")
         end
     },
 
@@ -101,7 +102,7 @@ return {
             "MunifTanjim/nui.nvim",
         },
         config = function()
-            require "plug.neotree"
+            require("plug.neotree")
         end
     },
 
@@ -114,7 +115,7 @@ return {
         },
         event = { "BufReadPost", "BufNewFile" },
         config = function()
-            require "plug.treesitter"
+            require("plug.treesitter")
         end
     },
 
