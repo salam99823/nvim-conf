@@ -9,6 +9,13 @@ local luasnip = require("luasnip")
 local cmp = require("cmp")
 
 cmp.setup({
+	window = {
+		border = "rounded",
+	},
+	completion = {
+		border = "rounded",
+	},
+
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- Luasnip expand
@@ -17,8 +24,8 @@ cmp.setup({
 
 	-- Mappings for cmp
 	mapping = {
-		["<S-Tab>"] = cmp.mapping.select_prev_item(),
-		["<Tab>"] = cmp.mapping.select_next_item(),
+		-- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
+		-- ["<Tab>"] = cmp.mapping.select_next_item(),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
@@ -32,7 +39,6 @@ cmp.setup({
 		{ name = "nvim_lsp_signature_help" }, -- LSP for parameters in functions
 		{ name = "nvim_lua" }, -- Lua Neovim API
 		{ name = "luasnip" }, -- Luasnip
-		{ name = "buffer" }, -- Buffers
 		{ name = "path" }, -- Paths
 		{ name = "emoji" }, -- Emoji
 	}),
