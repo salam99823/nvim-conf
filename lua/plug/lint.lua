@@ -3,6 +3,3 @@
     Description: Formatter plugin configuration
     See: http://github.com/mfussenegger/nvim-lint
 ]]
-local lint = require("lint")
-
-print(lint)

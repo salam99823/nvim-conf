@@ -29,13 +29,20 @@ local handlers = {
 mason_lspconfig.setup({
 	handlers = handlers,
 	ensure_installed = {
-		"lua_ls", -- LSP for Lua language
-		"tsserver", -- LSP for Typescript and Javascript
-		"emmet_ls", -- LSP for Emmet (Vue, HTML, CSS)
-		"cssls", -- LSP for CSS
-		"ruff", -- LSP for Python
-		"rust_analyzer", -- LSP for Rust
-		"svelte", -- LSP for Svelte
+		"tsserver",
+		"svelte",
+		"emmet_ls",
+		"cssls",
+		"lua_ls",
+		"ruff",
+		"rust_analyzer",
+    "clangd",
+    "cmake",
+    "lemminx",
+    "biome",
+    "taplo",
+    "hydra_lsp",
+    "vimls",
 	},
 })
 

@@ -24,8 +24,8 @@ cmp.setup({
 
 	-- Mappings for cmp
 	mapping = {
-		-- ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-		-- ["<Tab>"] = cmp.mapping.select_next_item(),
+		["<S-Tab>"] = cmp.mapping.select_prev_item(),
+		["<Tab>"] = cmp.mapping.select_next_item(),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
