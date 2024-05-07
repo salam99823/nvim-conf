@@ -11,16 +11,3 @@ dap.adapters.gdb = {
 	command = "gdb",
 	args = { "-i", "dap" },
 }
-
-dap.configurations.c = {
-	{
-		name = "Launch",
-		type = "gdb",
-		request = "launch",
-		program = function()
-			return Fn.input("Path to executable: ", Fn.getcwd() .. "/", "file")
-		end,
-		cwd = "${workspaceFolder}",
-		stopAtBeginningOfMainSubprogram = false,
-	},
-}
