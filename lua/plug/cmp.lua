@@ -41,6 +41,7 @@ cmp.setup({
 		{ name = "luasnip" }, -- Luasnip
 		{ name = "path" }, -- Paths
 		{ name = "emoji" }, -- Emoji
+		{ name = "crates" },
 	}),
 })
 

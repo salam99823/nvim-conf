@@ -126,8 +126,8 @@ return {
 			"nvim-lua/plenary.nvim",
 			"antoinemadec/FixCursorHold.nvim",
 			"nvim-treesitter/nvim-treesitter",
-      "nvim-neotest/neotest-python",
-      "rouge8/neotest-rust",
+			"nvim-neotest/neotest-python",
+			"rouge8/neotest-rust",
 		},
 		config = function()
 			require("plug.neotest")
@@ -154,8 +154,16 @@ return {
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
 		opts = {},
-    config = function()
-      require("plug.ibl")
-    end
+		config = function()
+			require("plug.ibl")
+		end,
+	},
+
+	{
+		"saecki/crates.nvim",
+		tag = "stable",
+		config = function()
+			require("plug.crates")
+		end,
 	},
 }
