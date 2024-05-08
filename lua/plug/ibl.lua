@@ -5,4 +5,10 @@
 ]]
 local ibl = require("ibl")
 
-ibl.setup({})
+ibl.setup({
+	enabled = false,
+	indent = {},
+	whitespace = {
+		highlight = { "Whitespace", "NonText" },
+	},
+})
