@@ -3,22 +3,21 @@
     Description: Lualine plugin configuration
     See: https://github.com/nvim-lualine/lualine.nvim
 ]]
-local active_lsp = {
-	function()
-		local buftype = Api.nvim_buf_get_option(0, "filetype")
-		local clients = Lsp.get_active_clients()
-		if next(clients) == nil then
-			return ""
-		end
-		for _, client in ipairs(clients) do
-			local filetypes = client.config.filetypes
-			if filetypes and Fn.index(filetypes, buftype) ~= -1 then
-				return client.name
-			end
-		end
+local function active_lsp()
+	local buftype = Api.nvim_buf_get_option(0, "filetype")
+	local clients = Lsp.get_active_clients()
+	if next(clients) == nil then
 		return ""
-	end,
-}
+	end
+	for _, client in ipairs(clients) do
+		local filetypes = client.config.filetypes
+		if filetypes and Fn.index(filetypes, buftype) ~= -1 then
+			return client.name
+		end
+	end
+	return ""
+end
+
 require("lualine").setup({
 	options = {
 		icons_enabled = true,
@@ -40,10 +39,37 @@ require("lualine").setup({
 	},
 	sections = {
 		lualine_a = { "mode" },
-		lualine_b = { "diagnostics", "filename" },
-		lualine_c = { active_lsp },
-		lualine_x = { "fileformat", "encoding", "filetype" },
-		lualine_y = { "diff", "branch" },
+		lualine_b = {
+			{
+				"diagnostics",
+				on_click = function()
+					Cmd([[TroubleToggle]])
+				end,
+			},
+			"filename",
+		},
+		lualine_c = {
+			{
+				active_lsp,
+				on_click = function()
+					Cmd([[LspInfo]])
+				end,
+			},
+		},
+		lualine_y = {
+			{
+				"diff",
+				on_click = function()
+					Cmd([[Telescope git_status]])
+				end,
+			},
+			{
+				"branch",
+				on_click = function()
+					Cmd([[Telescope git_branches]])
+				end,
+			},
+		},
 		lualine_z = { "location" },
 	},
 	inactive_sections = {
@@ -57,5 +83,11 @@ require("lualine").setup({
 	tabline = {},
 	winbar = {},
 	inactive_winbar = {},
-	extensions = { "lazy", "trouble", "nvim-tree", "mason", "nvim-dap-ui" },
+	extensions = {
+		"lazy",
+		"trouble",
+		"mason",
+		"nvim-dap-ui",
+		"neo-tree",
+	},
 })

@@ -98,7 +98,6 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
-		lazy = false,
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
@@ -125,7 +124,6 @@ return {
 
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
 		build = ":TSUpdate",
 		dependencies = {
 			"windwp/nvim-ts-autotag",
