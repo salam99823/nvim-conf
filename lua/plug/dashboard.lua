@@ -10,41 +10,53 @@ dashboard.setup({
 	config = {
 		week_header = {
 			enable = true,
+			concat = nil,
+			append = nil,
 		},
 		shortcut = {
 			{
-				desc = " Update",
-				group = "@property",
-				action = "Lazy update",
-				key = "u",
-			},
-			{
 				icon = " ",
-				icon_hl = "@variable",
 				desc = "Files",
-				group = "Label",
 				action = "Telescope find_files",
+        group = "@method",
 				key = "f",
 			},
+
 			{
-				desc = " Apps",
-				group = "DiagnosticHint",
-				action = "Telescope app",
-				key = "a",
+				icon = " ",
+				desc = "Update",
+				action = "Lazy update",
+        group = "@method",
+				key = "u",
 			},
+
 			{
-				desc = " dotfiles",
-				group = "Number",
-				action = "Telescope dotfiles",
+				icon = " ",
+				desc = "Find plugin documentation",
+				action = "Telescope lazy",
+        group = "@method",
 				key = "d",
 			},
 		},
+		packages = {
+			enable = true,
+		}, -- show how many plugins neovim loaded
 		project = {
 			enable = true,
-			limit = 8,
-			icon = "your icon",
-			label = "",
-			action = "Telescope find_files cwd=",
 		},
+		mru = {
+			cwd_only = false,
+		},
+		footer = {}, -- footer
+	},
+	hide = {
+		statusline = true,
+		tabline = true,
+	},
+	preview = {
+		command = "",
+		file_path = nil,
+		file_height = 0,
+		file_width = 0,
 	},
 })

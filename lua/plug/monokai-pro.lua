@@ -27,14 +27,14 @@ require("monokai-pro").setup({
 	inc_search = "background", -- underline | background
 	background_clear = {
 		"float_win",
-		-- "toggleterm",
+		"toggleterm",
 		"telescope",
 		-- "which-key",
 		-- "renamer",
 		-- "notify",
 		-- "nvim-tree",
 		"neo-tree",
-		-- "bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
+		"bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
 	}, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
 	plugins = {
 		indent_blankline = {
