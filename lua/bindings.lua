@@ -1,3 +1,8 @@
+--[[
+    File: bindings.lua
+    Description: Keybindings config
+    See: https://github.com/salam99823/nvim-conf
+]]
 require("utils.aliases")
 require("utils.binders")
 

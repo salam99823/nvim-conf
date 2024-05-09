@@ -1,3 +1,8 @@
+--[[
+    File: plugins.lua
+    Description: Plugin list
+    See: https://github.com/salam99823/nvim-conf
+]]
 require("utils.aliases")
 
 return {
@@ -11,6 +16,7 @@ return {
 		end,
 	},
 
+	-- Colorscheme {{{
 	{
 		"tanvirtin/monokai.nvim",
 		config = function()
@@ -27,21 +33,30 @@ return {
 			require("plug.monokai-pro")
 		end,
 	},
+	-- }}}
 
 	{
 		"williamboman/mason.nvim",
 		dependencies = {
+			-- LSP {{{
 			"williamboman/mason-lspconfig.nvim", -- LSP
 			"neovim/nvim-lspconfig",
+			-- }}}
 
+			-- DAP {{{
 			"rcarriga/nvim-dap-ui", -- DAP
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
 			"LiadOz/nvim-dap-repl-highlights",
+			-- }}}
 
+			-- Linter {{{
 			"mfussenegger/nvim-lint", -- Linter
+			-- }}}
 
+			-- Formatter {{{
 			"mhartington/formatter.nvim", -- Formatter
+			-- }}}
 		},
 		config = function()
 			require("plug.mason")
@@ -88,6 +103,8 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
 			"nvim-telescope/telescope-fzy-native.nvim",
+			"nvim-telescope/telescope-dap.nvim",
+			"tsakirist/telescope-lazy.nvim",
 		},
 		config = function()
 			require("plug.telescope")
@@ -164,6 +181,15 @@ return {
 		tag = "stable",
 		config = function()
 			require("plug.crates")
+		end,
+	},
+
+	{
+		"akinsho/bufferline.nvim",
+		version = "*",
+		dependencies = "nvim-tree/nvim-web-devicons",
+		config = function()
+			require("plug.bufferline")
 		end,
 	},
 }

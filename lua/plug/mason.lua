@@ -5,4 +5,8 @@
 ]]
 local mason = require("mason")
 
-mason.setup()
+mason.setup({
+	ui = {
+		border = "rounded",
+	},
+})

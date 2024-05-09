@@ -12,7 +12,6 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 
-	-- Needed parsers
 	ensure_installed = {
 		"lua",
     "css",
@@ -36,18 +35,14 @@ require("nvim-treesitter.configs").setup({
     "xml",
 	},
 
-	-- Install all parsers synchronously
 	sync_install = false,
 
-	-- Highlight
 	highlight = {
-		-- Enabling highlight for all files
 		enable = true,
 		disable = {},
 	},
 
 	indent = {
-		-- Disabling indentation for all files
 		enable = true,
 		disable = {},
 	},
