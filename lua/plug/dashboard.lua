@@ -39,5 +39,12 @@ dashboard.setup({
 				key = "d",
 			},
 		},
+		project = {
+			enable = true,
+			limit = 8,
+			icon = "your icon",
+			label = "",
+			action = "Telescope find_files cwd=",
+		},
 	},
 })

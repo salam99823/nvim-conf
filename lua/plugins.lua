@@ -19,7 +19,7 @@ return {
 	-- Colorscheme {{{
 	{
 		"tanvirtin/monokai.nvim",
-    lazy = true,
+		lazy = true,
 		config = function()
 			require("plug.monokai")
 		end,
@@ -116,6 +116,7 @@ return {
 			"nvim-telescope/telescope-fzy-native.nvim",
 			"nvim-telescope/telescope-dap.nvim",
 			"tsakirist/telescope-lazy.nvim",
+			"benfowler/telescope-luasnip.nvim",
 		},
 		config = function()
 			require("plug.telescope")
@@ -164,7 +165,7 @@ return {
 
 	{
 		"folke/neodev.nvim",
-    lazy=true,
+		lazy = true,
 		opts = {},
 	},
 

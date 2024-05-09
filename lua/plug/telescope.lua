@@ -11,7 +11,7 @@ telescope.setup({
 		},
 		lazy = {
 			-- Optional theme (the extension doesn't set a default theme)
-			theme = "ivy",
+			-- theme = "ivy",
 			-- Whether or not to show the icon in the first column
 			show_icon = true,
 			-- Mappings for the actions
@@ -66,3 +66,4 @@ telescope.load_extension("ui-select")
 telescope.load_extension("lazy")
 telescope.load_extension("dap")
 telescope.load_extension("fzy_native")
+telescope.load_extension('luasnip')
