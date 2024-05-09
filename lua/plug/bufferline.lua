@@ -11,13 +11,14 @@ bufferline.setup({
 		color_icons = true,
 		offsets = {
 			{
+				text = "Neo-tree",
 				filetype = "neo-tree",
 				text_align = "left",
 				separator = true,
 			},
 		},
 
-		separator_style = "slope", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
+		separator_style = "thick", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
 		hover = {
 			enabled = true,
 			delay = 200,

@@ -190,4 +190,12 @@ return {
 			require("plug.bufferline")
 		end,
 	},
+
+	{
+		"akinsho/toggleterm.nvim",
+		version = "*",
+		config = function()
+      require("plug.toggleterm")
+    end,
+	},
 }

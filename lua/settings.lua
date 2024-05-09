@@ -18,10 +18,6 @@ Opt.cursorline = true
 Opt.scrolloff = 10
 Opt.colorcolumn = "80"
 
--- Vim transparent window configuration
-Opt.winblend = 0
-Opt.pumblend = 0
-
 -- Tabs {{{
 Opt.expandtab = true -- Use spaces by default
 Opt.shiftwidth = 2 -- Set amount of space characters, when we press "<" or ">"
