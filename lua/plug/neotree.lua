@@ -27,6 +27,12 @@ neotree.setup({
 				conflict = "",
 			},
 		},
+		indent = {
+			with_markers = true,
+			indent_marker = "▏",
+			last_indent_marker = "▏",
+			indent_size = 2,
+		},
 	},
 	window = {
 		width = 30,
@@ -46,7 +52,9 @@ neotree.setup({
 		follow_current_file = {
 			enabled = true,
 		},
-		hide_dotfiles = false,
+		filtered_items = {
+			hide_dotfiles = false,
+		},
 	},
 	source_selector = {
 		winbar = false, -- toggle to show selector on winbar
