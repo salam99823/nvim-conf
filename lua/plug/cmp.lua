@@ -35,12 +35,12 @@ cmp.setup({
 	},
 
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" }, -- LSP
-		{ name = "nvim_lsp_signature_help" }, -- LSP for parameters in functions
-		{ name = "nvim_lua" }, -- Lua Neovim API
-		{ name = "luasnip" }, -- Luasnip
-		{ name = "path" }, -- Paths
-		{ name = "emoji" }, -- Emoji
+		{ name = "nvim_lsp" },
+		{ name = "nvim_lsp_signature_help" },
+		{ name = "nvim_lua" },
+		{ name = "luasnip" },
+		{ name = "path" },
+		{ name = "emoji" },
 		{ name = "crates" },
 	}),
 })

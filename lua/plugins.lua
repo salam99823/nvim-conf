@@ -44,14 +44,27 @@ return {
 			-- }}}
 
 			-- DAP {{{
-			"rcarriga/nvim-dap-ui", -- DAP
-			"mfussenegger/nvim-dap",
-			"nvim-neotest/nvim-nio",
-			"LiadOz/nvim-dap-repl-highlights",
-			-- }}}
+			{
+				"rcarriga/nvim-dap-ui", -- DAP
+				lazy = true,
+				dependencies = {
+					"mfussenegger/nvim-dap",
+					"nvim-neotest/nvim-nio",
+					"LiadOz/nvim-dap-repl-highlights",
+				},
+				config = function()
+					require("plug.dap")
+				end,
+			}, -- }}}
 
 			-- Linter {{{
-			"mfussenegger/nvim-lint", -- Linter
+			{
+				"mfussenegger/nvim-lint",
+				lazy = true,
+				config = function()
+					require("plug.lint")
+				end,
+			}, -- Linter
 			-- }}}
 
 			-- Formatter {{{
@@ -62,8 +75,6 @@ return {
 			require("plug.mason")
 			require("plug.lspconf")
 			require("plug.formatter")
-			require("plug.lint")
-			require("plug.dap")
 		end,
 	},
 
@@ -136,6 +147,7 @@ return {
 
 	{
 		"nvim-neotest/neotest",
+		lazy = true,
 		dependencies = {
 			"nvim-neotest/nvim-nio",
 			"nvim-lua/plenary.nvim",
@@ -176,6 +188,7 @@ return {
 
 	{
 		"saecki/crates.nvim",
+		lazy = true,
 		tag = "stable",
 		config = function()
 			require("plug.crates")
@@ -195,7 +208,14 @@ return {
 		"akinsho/toggleterm.nvim",
 		version = "*",
 		config = function()
-      require("plug.toggleterm")
-    end,
+			require("plug.toggleterm")
+		end,
+	},
+
+	{
+		"lewis6991/gitsigns.nvim",
+		config = function()
+			require("gitsigns").setup()
+		end,
 	},
 }
