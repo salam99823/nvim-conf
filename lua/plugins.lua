@@ -19,6 +19,7 @@ return {
 	-- Colorscheme {{{
 	{
 		"tanvirtin/monokai.nvim",
+    lazy = true,
 		config = function()
 			require("plug.monokai")
 		end,
@@ -163,6 +164,7 @@ return {
 
 	{
 		"folke/neodev.nvim",
+    lazy=true,
 		opts = {},
 	},
 
