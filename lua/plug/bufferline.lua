@@ -4,9 +4,9 @@
     See: https://github.com/akinsho/bufferline.nvim
 ]]
 local bufferline = require("bufferline")
-bufferline.setup({
+bufferline.setup(--[[{
 	options = {
-		mode = "tabs",
+		mode = "buffers", -- "tabs" | "buffers"
 		diagnostics = "nvim_lsp",
 		color_icons = true,
 		offsets = {
@@ -18,11 +18,12 @@ bufferline.setup({
 			},
 		},
 
-		separator_style = "thick", -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
+		separator_style = "thick", 
+    -- "slant" | "slope" | "thick" | "thin" | { 'any', 'any' }
 		hover = {
 			enabled = true,
 			delay = 200,
 			reveal = { "close" },
 		},
 	},
-})
+}]])

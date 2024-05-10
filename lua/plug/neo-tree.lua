@@ -12,7 +12,8 @@ neotree.setup({
 			trailing_slash = true,
 			use_git_status_colors = true,
 		},
-		git_status = {
+--[[
+    git_status = {
 			symbols = {
 				-- Change type
 				added = "✚",
@@ -27,6 +28,7 @@ neotree.setup({
 				conflict = "",
 			},
 		},
+]]
 		indent = {
 			with_markers = true,
 			indent_marker = "▏",
@@ -53,10 +55,11 @@ neotree.setup({
 			enabled = true,
 		},
 		filtered_items = {
-			hide_dotfiles = false,
+			visible = true,
 		},
 	},
-	source_selector = {
+--[[
+  source_selector = {
 		winbar = false, -- toggle to show selector on winbar
 		statusline = false, -- toggle to show selector on statusline
 		show_scrolled_off_parent_node = false, -- boolean
@@ -89,4 +92,5 @@ neotree.setup({
 		highlight_separator = "NeoTreeTabSeparatorInactive", -- string
 		highlight_separator_active = "NeoTreeTabSeparatorActive", -- string
 	},
+]]
 })

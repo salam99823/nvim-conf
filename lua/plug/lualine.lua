@@ -45,6 +45,7 @@ require("lualine").setup({
 				on_click = function()
 					Cmd([[TroubleToggle]])
 				end,
+				always_visible = true,
 			},
 			"filename",
 		},
@@ -78,9 +79,31 @@ require("lualine").setup({
 		lualine_c = {},
 		lualine_x = {},
 		lualine_y = {},
-		lualine_z = {},
+		lualine_z = { "location" },
 	},
-	tabline = {},
+	tabline = {
+		lualine_a = {
+			{
+				"buffers",
+				use_mode_colors = true,
+        filetype_names = {
+          toggleterm = "zsh",
+        },
+			},
+		},
+		lualine_b = {
+			{
+				"tabs",
+				mode = 1,
+			},
+		},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
+		lualine_z = {
+			"datetime",
+		},
+	},
 	winbar = {},
 	inactive_winbar = {},
 	extensions = {

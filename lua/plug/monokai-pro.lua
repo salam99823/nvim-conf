@@ -7,6 +7,7 @@ require("monokai-pro").setup({
 	transparent_background = false,
 	terminal_colors = true,
 	devicons = true, -- highlight the icons of `nvim-web-devicons`
+--[[
 	styles = {
 		comment = { italic = true },
 		keyword = { italic = true }, -- any other keyword
@@ -17,6 +18,7 @@ require("monokai-pro").setup({
 		annotation = { italic = true },
 		tag_attribute = { italic = true }, -- attribute of tag in reactjs
 	},
+]]
 	-- filter = "classic", -- classic | octagon | pro | machine | ristretto | spectrum
 	-- Enable this will disable filter option
 	day_night = {
@@ -34,11 +36,11 @@ require("monokai-pro").setup({
 		-- "notify",
 		-- "nvim-tree",
 		"neo-tree",
-		"bufferline", -- better used if background of `neo-tree` or `nvim-tree` is cleared
+		"bufferline",
 	}, -- "float_win", "toggleterm", "telescope", "which-key", "renamer", "neo-tree", "nvim-tree", "bufferline"
 	plugins = {
 		indent_blankline = {
-			context_highlight = "default", -- default | pro
+			context_highlight = "pro", -- default | pro
 			context_start_underline = false,
 		},
 	},

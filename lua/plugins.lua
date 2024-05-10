@@ -51,7 +51,6 @@ return {
 				dependencies = {
 					"mfussenegger/nvim-dap",
 					"nvim-neotest/nvim-nio",
-					"LiadOz/nvim-dap-repl-highlights",
 				},
 				config = function()
 					require("plug.dap")
@@ -131,7 +130,7 @@ return {
 			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-			require("plug.neotree")
+			require("plug.neo-tree")
 		end,
 	},
 

@@ -48,7 +48,6 @@ telescope.setup({
 				width = 0.5,
 				height = 0.5,
 			},
-			-- Other telescope configuration options
 		},
 		fzy_native = {
 			override_generic_sorter = false,
