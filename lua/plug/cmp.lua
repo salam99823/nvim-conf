@@ -5,7 +5,6 @@
 ]]
 require("utils.aliases")
 
-local luasnip = require("luasnip")
 local cmp = require("cmp")
 
 cmp.setup({
@@ -18,14 +17,14 @@ cmp.setup({
 
 	snippet = {
 		expand = function(args)
-			luasnip.lsp_expand(args.body) -- Luasnip expand
+			require("luasnip").lsp_expand(args.body) -- Luasnip expand
 		end,
 	},
 
 	-- Mappings for cmp
 	mapping = {
-		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 		["<Tab>"] = cmp.mapping.select_next_item(),
+		["<S-Tab>"] = cmp.mapping.select_prev_item(),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.close(),
 		["<CR>"] = cmp.mapping.confirm({
@@ -40,8 +39,11 @@ cmp.setup({
 		{ name = "nvim_lua" },
 		{ name = "luasnip" },
 		{ name = "path" },
+    { name = 'buffer' },
 		{ name = "emoji" },
 		{ name = "crates" },
+    { name = "pypi", keyword_length = 4 },
+    { name = 'nerdfont' },
 	}),
 })
 

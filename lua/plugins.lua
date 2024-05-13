@@ -84,12 +84,28 @@ return {
 		dependencies = {
 			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
+			"rafamadriz/friendly-snippets",
+			"chrisgrieser/cmp-nerdfont",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-emoji",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lua",
-			"rafamadriz/friendly-snippets",
+			"hrsh7th/cmp-buffer",
+			{
+				"vrslev/cmp-pypi",
+				dependencies = { "nvim-lua/plenary.nvim" },
+				ft = "toml",
+			},
+      {
+        "saecki/crates.nvim",
+        ft = "toml",
+        lazy = true,
+        tag = "stable",
+        config = function()
+          require("plug.crates")
+        end,
+      },
 		},
 		config = function()
 			require("plug.cmp")
@@ -185,15 +201,6 @@ return {
 		opts = {},
 		config = function()
 			require("plug.ibl")
-		end,
-	},
-
-	{
-		"saecki/crates.nvim",
-		lazy = true,
-		tag = "stable",
-		config = function()
-			require("plug.crates")
 		end,
 	},
 
