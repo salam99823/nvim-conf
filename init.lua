@@ -1,9 +1,12 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
+require("utils.aliases")
 
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+G.mapleader = " "
+G.maplocalleader = "\\"
+
+local lazypath = Fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not (vim.uv or vim.loop).fs_stat(lazypath) then
-	vim.fn.system({
+  print("lazy is installing...")
+	Fn.system({
 		"git",
 		"clone",
 		"--filter=blob:none",
@@ -12,7 +15,7 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 		lazypath,
 	})
 end
-vim.opt.rtp:prepend(lazypath)
+Opt.rtp:prepend(lazypath)
 
 require("settings")
 
@@ -21,4 +24,4 @@ require("lazy").setup("plugins", {})
 require("neovide")
 require("bindings")
 
-vim.cmd.colorscheme("monokai-pro-classic")
+Cmd.colorscheme("monokai-pro-classic")

@@ -24,6 +24,9 @@ local handlers = {
 			},
 		})
 	end,
+	["pest_ls"] = function()
+		require("pest-vim").setup({})
+	end,
 }
 
 mason_lspconfig.setup({
@@ -36,13 +39,14 @@ mason_lspconfig.setup({
 		"lua_ls",
 		"ruff",
 		"rust_analyzer",
-    "clangd",
-    "cmake",
-    "lemminx",
-    "biome",
-    "taplo",
-    "hydra_lsp",
-    "vimls",
+		"clangd",
+		"cmake",
+		"lemminx",
+		"biome",
+		"taplo",
+		"hydra_lsp",
+		"vimls",
+		"pest_ls",
 	},
 })
 

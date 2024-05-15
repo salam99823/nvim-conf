@@ -40,13 +40,14 @@ return {
 		"williamboman/mason.nvim",
 		dependencies = {
 			-- LSP {{{
-			"williamboman/mason-lspconfig.nvim", -- LSP
+			"williamboman/mason-lspconfig.nvim",
 			"neovim/nvim-lspconfig",
+			"pest-parser/pest.vim",
 			-- }}}
 
 			-- DAP {{{
 			{
-				"rcarriga/nvim-dap-ui", -- DAP
+				"rcarriga/nvim-dap-ui",
 				lazy = true,
 				dependencies = {
 					"mfussenegger/nvim-dap",
@@ -64,17 +65,21 @@ return {
 				config = function()
 					require("plug.lint")
 				end,
-			}, -- Linter
+			},
 			-- }}}
 
 			-- Formatter {{{
-			"mhartington/formatter.nvim", -- Formatter
+			{
+				"mhartington/formatter.nvim",
+				config = function()
+					require("plug.formatter")
+				end,
+			},
 			-- }}}
 		},
 		config = function()
 			require("plug.mason")
 			require("plug.lspconf")
-			require("plug.formatter")
 		end,
 	},
 
@@ -97,15 +102,15 @@ return {
 				dependencies = { "nvim-lua/plenary.nvim" },
 				ft = "toml",
 			},
-      {
-        "saecki/crates.nvim",
-        ft = "toml",
-        lazy = true,
-        tag = "stable",
-        config = function()
-          require("plug.crates")
-        end,
-      },
+			{
+				"saecki/crates.nvim",
+				ft = "toml",
+				lazy = true,
+				tag = "stable",
+				config = function()
+					require("plug.crates")
+				end,
+			},
 		},
 		config = function()
 			require("plug.cmp")
