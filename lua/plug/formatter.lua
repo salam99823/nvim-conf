@@ -9,10 +9,10 @@ require("formatter").setup({
 	log_level = vim.log.levels.WARN,
 	filetype = {
 		lua = {
-			require("formatter.filetypes.lua").stylua(),
+			require("formatter.filetypes.lua").stylua,
 		},
 		python = {
-			require("formatter.filetypes.python").ruff(),
+			require("formatter.filetypes.python").ruff,
 		},
 		rust = {
 			exe = "rustfmt",
@@ -28,15 +28,15 @@ require("formatter").setup({
 				},
 			},
 		},
-    svelte = {
-      require("formatter.filetypes.svelte").prettier
-    },
+		svelte = {
+			require("formatter.filetypes.svelte").prettier,
+		},
 		css = {
 			require("formatter.filetypes.css").prettier,
 		},
-    toml = {
-      require("formatter.filetypes.toml").taplo,
-    },
+		toml = {
+			require("formatter.filetypes.toml").taplo,
+		},
 		pest = {
 			{
 				exe = "pestfmt",

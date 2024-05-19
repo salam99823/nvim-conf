@@ -50,6 +50,7 @@ return {
 				"rcarriga/nvim-dap-ui",
 				lazy = true,
 				dependencies = {
+					"jay-babu/mason-nvim-dap.nvim",
 					"mfussenegger/nvim-dap",
 					"nvim-neotest/nvim-nio",
 				},
@@ -231,5 +232,10 @@ return {
 		config = function()
 			require("gitsigns").setup()
 		end,
+	},
+
+	{
+		"windwp/nvim-autopairs",
+		event = "InsertEnter",
 	},
 }
