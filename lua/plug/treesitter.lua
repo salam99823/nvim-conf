@@ -3,47 +3,45 @@
   Description: Configuration of tree-sitter
   See: https://github.com/tree-sitter/tree-sitter
 ]]
-require("nvim-treesitter.configs").setup({
-  modules = {},
-
-  auto_install = true,
+return {
+	auto_install = true,
 	ignore_install = {},
-  autotag = {
-		enable = true,
-	},
-
 	ensure_installed = {
 		"lua",
-    "css",
-    "scss",
-    "html",
+		"css",
+		"scss",
+		"html",
+    "svelte",
 		"typescript",
 		"javascript",
-    "vim",
-    "vimdoc",
+		"vim",
+		"vimdoc",
+    "pymanifest",
 		"python",
 		"rust",
-    "c",
-    "cpp",
-    "cmake",
-    "git_config",
-    "gitcommit",
-    "gitignore",
-    "json",
-    "toml",
-    "yaml",
-    "xml",
+		"c",
+		"cpp",
+		"cmake",
+		"git_config",
+		"gitcommit",
+		"gitignore",
+    "markdown",
+    "rst",
+		"json",
+		"toml",
+		"yaml",
+		"xml",
 	},
-
 	sync_install = false,
-
+	autotag = {
+		enable = true,
+	},
 	highlight = {
 		enable = true,
 		disable = {},
 	},
-
 	indent = {
 		enable = true,
 		disable = {},
 	},
-})
+}

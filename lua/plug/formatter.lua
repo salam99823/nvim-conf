@@ -3,40 +3,22 @@
     Description: Formatter plugin configuration
     See: http://github.com/mhartington/formatter.nvim
 ]]
-local util = require("formatter.util")
-require("formatter").setup({
-	logging = true,
-	log_level = vim.log.levels.WARN,
+return {
 	filetype = {
 		lua = {
-			require("formatter.filetypes.lua").stylua,
-		},
+      require("formatter.filetypes.lua").stylua,
+    },
 		python = {
 			require("formatter.filetypes.python").ruff,
 		},
-		rust = {
-			exe = "rustfmt",
-			args = {
-				util.escape_path(util.get_current_buffer_file_path()),
-			},
-		},
+		rust = require("formatter.filetypes.rust"),
 		markdown = {
-			{
-				exe = "markdownlint",
-				args = {
-					util.escape_path(util.get_current_buffer_file_path()),
-				},
-			},
+			require("formatter.filetypes.markdown").prettier,
+			require("formatter.filetypes.markdown").prettierd,
 		},
-		svelte = {
-			require("formatter.filetypes.svelte").prettier,
-		},
-		css = {
-			require("formatter.filetypes.css").prettier,
-		},
-		toml = {
-			require("formatter.filetypes.toml").taplo,
-		},
+		svelte = require("formatter.filetypes.svelte"),
+		css = require("formatter.filetypes.css"),
+		toml = require("formatter.filetypes.toml"),
 		pest = {
 			{
 				exe = "pestfmt",
@@ -46,6 +28,7 @@ require("formatter").setup({
 				stdin = true,
 			},
 		},
+		yaml = require("formatter.filetypes.yaml"),
 		["*"] = require("formatter.filetypes.any"),
 	},
-})
+}

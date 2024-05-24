@@ -18,7 +18,7 @@ local function active_lsp()
 	return ""
 end
 
-require("lualine").setup({
+return {
 	options = {
 		icons_enabled = true,
 		theme = "auto",
@@ -86,9 +86,9 @@ require("lualine").setup({
 			{
 				"buffers",
 				use_mode_colors = true,
-        filetype_names = {
-          toggleterm = "zsh",
-        },
+				filetype_names = {
+					toggleterm = "zsh",
+				},
 			},
 		},
 		lualine_b = {
@@ -102,6 +102,11 @@ require("lualine").setup({
 		lualine_y = {},
 		lualine_z = {
 			"datetime",
+			{
+				require("lazy.status").updates,
+				cond = require("lazy.status").has_updates,
+				color = { fg = "#ff9e64" },
+			},
 		},
 	},
 	winbar = {},
@@ -113,4 +118,4 @@ require("lualine").setup({
 		"nvim-dap-ui",
 		"neo-tree",
 	},
-})
+}

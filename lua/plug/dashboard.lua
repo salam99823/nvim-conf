@@ -3,9 +3,7 @@
     Description: Dashboard plugin configuration
     See: http://github.com/nvimdev/dashboard-nvim
 ]]
-local dashboard = require("dashboard")
-
-dashboard.setup({
+return {
 	theme = "hyper",
 	config = {
 		week_header = {
@@ -18,7 +16,7 @@ dashboard.setup({
 				icon = " ",
 				desc = "Files",
 				action = "Telescope find_files",
-        group = "@method",
+				group = "@method",
 				key = "f",
 			},
 
@@ -26,7 +24,7 @@ dashboard.setup({
 				icon = " ",
 				desc = "Update",
 				action = "Lazy update",
-        group = "@method",
+				group = "@method",
 				key = "u",
 			},
 
@@ -34,29 +32,9 @@ dashboard.setup({
 				icon = " ",
 				desc = "Find plugin documentation",
 				action = "Telescope lazy",
-        group = "@method",
+				group = "@method",
 				key = "d",
 			},
 		},
-		packages = {
-			enable = true,
-		}, -- show how many plugins neovim loaded
-		project = {
-			enable = true,
-		},
-		mru = {
-			cwd_only = false,
-		},
-		footer = {}, -- footer
 	},
-	hide = {
-		statusline = true,
-		tabline = true,
-	},
-	preview = {
-		command = "",
-		file_path = nil,
-		file_height = 0,
-		file_width = 0,
-	},
-})
+}

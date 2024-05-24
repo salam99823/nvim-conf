@@ -3,26 +3,18 @@
     Description: Plugin list
     See: https://github.com/salam99823/nvim-conf
 ]]
-require("utils.aliases")
-
 return {
 	{
 		"nvim-lualine/lualine.nvim",
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
-			require("plug.lualine")
-		end,
+		opts = require("plug.lualine"),
 	},
 
-	-- Colorscheme {{{
 	{
 		"tanvirtin/monokai.nvim",
-		lazy = true,
-		config = function()
-			require("plug.monokai")
-		end,
+		opts = {},
 	},
 
 	{
@@ -30,57 +22,66 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
-		config = function()
-			require("plug.monokai-pro")
-		end,
+		opts = require("plug.monokai-pro"),
 	},
-	-- }}}
 
 	{
 		"williamboman/mason.nvim",
+		dependencies = {},
+		opts = {
+			ui = {
+				border = "rounded",
+			},
+		},
+	},
+
+	{
+		"williamboman/mason-lspconfig.nvim",
 		dependencies = {
-			-- LSP {{{
-			"williamboman/mason-lspconfig.nvim",
+			"williamboman/mason.nvim",
 			"neovim/nvim-lspconfig",
-			"pest-parser/pest.vim",
-			-- }}}
-
-			-- DAP {{{
-			{
-				"rcarriga/nvim-dap-ui",
-				lazy = true,
-				dependencies = {
-					"jay-babu/mason-nvim-dap.nvim",
-					"mfussenegger/nvim-dap",
-					"nvim-neotest/nvim-nio",
-				},
-				config = function()
-					require("plug.dap")
-				end,
-			}, -- }}}
-
-			-- Linter {{{
-			{
-				"mfussenegger/nvim-lint",
-				lazy = true,
-				config = function()
-					require("plug.lint")
-				end,
-			},
-			-- }}}
-
-			-- Formatter {{{
-			{
-				"mhartington/formatter.nvim",
-				config = function()
-					require("plug.formatter")
-				end,
-			},
-			-- }}}
 		},
 		config = function()
-			require("plug.mason")
 			require("plug.lspconf")
+		end,
+	},
+
+	{
+		"pest-parser/pest.vim",
+		opts = {},
+	},
+
+	{
+		"mhartington/formatter.nvim",
+		config = function()
+			require("formatter").setup(require("plug.formatter"))
+		end,
+	},
+
+	{
+		"rcarriga/nvim-dap-ui",
+		dependencies = {
+			"jay-babu/mason-nvim-dap.nvim",
+			"mfussenegger/nvim-dap",
+			"nvim-neotest/nvim-nio",
+			{
+				"jonboh/nvim-dap-rr",
+				dependencies = {
+					"nvim-dap",
+					"telescope.nvim",
+				},
+			},
+		},
+		config = function()
+			require("plug.dap")
+		end,
+	},
+
+	{
+		"mfussenegger/nvim-lint",
+		lazy = true,
+		config = function()
+			require("plug.lint")
 		end,
 	},
 
@@ -103,18 +104,16 @@ return {
 				dependencies = { "nvim-lua/plenary.nvim" },
 				ft = "toml",
 			},
+
 			{
 				"saecki/crates.nvim",
 				ft = "toml",
-				lazy = true,
 				tag = "stable",
-				config = function()
-					require("plug.crates")
-				end,
+				opts = require("plug.crates"),
 			},
 		},
-		config = function()
-			require("plug.cmp")
+		config = function(plug)
+			plug.setup(require("plug.cmp"))
 		end,
 	},
 
@@ -123,14 +122,11 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
-			require("plug.trouble")
-		end,
+		opts = require("plug.trouble"),
 	},
 
 	{
 		"nvim-telescope/telescope.nvim",
-		branch = "0.1.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope-ui-select.nvim",
@@ -146,26 +142,33 @@ return {
 
 	{
 		"nvim-neo-tree/neo-tree.nvim",
-		branch = "v3.x",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 		},
-		config = function()
-			require("plug.neo-tree")
-		end,
+		opts = require("plug.neo-tree"),
 	},
 
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		dependencies = {
-			"windwp/nvim-ts-autotag",
+			{
+				"windwp/nvim-ts-autotag",
+				event = "InsertEnter",
+				opts = {},
+			},
+			{
+				"windwp/nvim-autopairs",
+				event = "InsertEnter",
+				opts = {},
+			},
 		},
-		event = { "BufReadPost", "BufNewFile" },
-		config = function()
-			require("plug.treesitter")
-		end,
+		event = {
+			"BufReadPost",
+			"BufNewFile",
+		},
+		opts = require("plug.treesitter"),
 	},
 
 	{
@@ -179,15 +182,19 @@ return {
 			"nvim-neotest/neotest-python",
 			"rouge8/neotest-rust",
 		},
-		config = function()
-			require("plug.neotest")
+		config = function(plug)
+			plug.setup(require("plug.neotest"))
 		end,
 	},
 
 	{
-		"folke/neodev.nvim",
-		lazy = true,
+		"folke/which-key.nvim",
 		opts = {},
+	},
+
+	{
+		"folke/neodev.nvim",
+		opts = require("plug.neodev"),
 	},
 
 	{
@@ -196,46 +203,40 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		config = function()
-			require("plug.dashboard")
-		end,
+		opts = require("plug.dashboard"),
 	},
 
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		main = "ibl",
-		opts = {},
-		config = function()
-			require("plug.ibl")
-		end,
+		opts = {
+			enabled = false,
+		},
 	},
 
 	{
 		"akinsho/bufferline.nvim",
-		version = "*",
-		dependencies = "nvim-tree/nvim-web-devicons",
-		config = function()
-			require("plug.bufferline")
-		end,
+		dependencies = {
+			"nvim-tree/nvim-web-devicons",
+		},
+		opts = {},
 	},
 
 	{
 		"akinsho/toggleterm.nvim",
-		version = "*",
-		config = function()
-			require("plug.toggleterm")
-		end,
+		opts = require("plug.toggleterm"),
 	},
 
 	{
 		"lewis6991/gitsigns.nvim",
-		config = function()
-			require("gitsigns").setup()
-		end,
+		opts = {},
 	},
 
 	{
-		"windwp/nvim-autopairs",
-		event = "InsertEnter",
+		"vxpm/ferris.nvim",
+		opts = {
+			create_commands = true,
+			url_handler = "xdg-open",
+		},
 	},
 }

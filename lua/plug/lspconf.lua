@@ -7,10 +7,7 @@ local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
 local handlers = {
-	-- The first entry (without a key) will be the default handler
-	-- and will be called for each installed server that doesn't have
-	-- a dedicated handler.
-	function(server_name) -- default handler (optional)
+	function(server_name)
 		lspconfig[server_name].setup({})
 	end,
 	["lua_ls"] = function()
@@ -24,12 +21,9 @@ local handlers = {
 			},
 		})
 	end,
-	["pest_ls"] = function()
-		require("pest-vim").setup({})
-	end,
 }
 
-mason_lspconfig.setup({
+return {
 	handlers = handlers,
 	ensure_installed = {
 		"tsserver",
@@ -46,8 +40,5 @@ mason_lspconfig.setup({
 		"taplo",
 		"hydra_lsp",
 		"vimls",
-		"pest_ls",
 	},
-})
-
-mason_lspconfig.setup_handlers(handlers)
+}

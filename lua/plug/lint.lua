@@ -3,20 +3,22 @@
     Description: Formatter plugin configuration
     See: http://github.com/mfussenegger/nvim-lint
 ]]
-require("lint").linters_by_ft = {
-	markdown = { "markuplint" },
+local lint = require("lint")
+
+local linters = {
+	markdown = { "markdownlint" },
 	python = { "ruff", "mypy" },
 }
 
-Api.nvim_create_autocmd({ "BufWritePost" }, {
-  callback = function()
+lint.linters_by_ft = linters
 
-    -- try_lint without arguments runs the linters defined in `linters_by_ft`
-    -- for the current filetype
-    require("lint").try_lint()
-
-    -- You can call `try_lint` with a linter name or a list of names to always
-    -- run specific linters, independent of the `linters_by_ft` configuration
-    require("lint").try_lint("cspell")
-  end,
+Api.nvim_create_user_command("TryLint", function(args)
+	require("lint").try_lint(args.fargs[0])
+end, {
+	nargs = 1,
+	complete = function(_, _, _)
+		local filetype = Api.nvim_buf_get_option(0, "filetype")
+		return linters[filetype]
+	end,
+	desc = "",
 })
