@@ -27,22 +27,18 @@ return {
 
 	{
 		"williamboman/mason.nvim",
-		dependencies = {},
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"neovim/nvim-lspconfig",
+		},
 		opts = {
 			ui = {
 				border = "rounded",
 			},
 		},
-	},
-
-	{
-		"williamboman/mason-lspconfig.nvim",
-		dependencies = {
-			"williamboman/mason.nvim",
-			"neovim/nvim-lspconfig",
-		},
-		config = function()
-			require("plug.lspconf")
+		config = function(opts)
+			require("mason").setup(opts)
+			require("mason-lspconfig").setup(require("plug.lspconf"))
 		end,
 	},
 

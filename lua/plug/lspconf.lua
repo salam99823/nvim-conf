@@ -3,7 +3,6 @@
     Description: Mason-lspconfig plugin configuration
     See: https://github.com/williamboman/mason-lspconfig.nvim
 ]]
-local mason_lspconfig = require("mason-lspconfig")
 local lspconfig = require("lspconfig")
 
 local handlers = {
@@ -31,6 +30,7 @@ return {
 		"emmet_ls",
 		"cssls",
 		"lua_ls",
+		"pylsp",
 		"ruff",
 		"rust_analyzer",
 		"clangd",

@@ -20,7 +20,6 @@ require("settings")
 
 require("lazy").setup({
 	spec = require("plugins"),
-	--spec = {},
 	defaults = {
 		lazy = false,
 	},
@@ -48,3 +47,5 @@ require("lazy").setup({
 
 require("neovide")
 require("bindings")
+
+Cmd.colorscheme("monokai-pro-classic")
