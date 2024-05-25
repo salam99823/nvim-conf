@@ -112,8 +112,8 @@ return {
 				opts = require("plug.crates"),
 			},
 		},
-		config = function(plug)
-			plug.setup(require("plug.cmp"))
+		config = function()
+			require("cmp").setup(require("plug.cmp"))
 		end,
 	},
 
