@@ -1,8 +1,3 @@
---[[
-  File: treesitter.lua
-  Description: Configuration of tree-sitter
-  See: https://github.com/tree-sitter/tree-sitter
-]]
 return {
 	auto_install = true,
 	ignore_install = {},
@@ -11,12 +6,12 @@ return {
 		"css",
 		"scss",
 		"html",
-    "svelte",
+		"svelte",
 		"typescript",
 		"javascript",
 		"vim",
 		"vimdoc",
-    "pymanifest",
+		"pymanifest",
 		"python",
 		"rust",
 		"c",
@@ -25,8 +20,8 @@ return {
 		"git_config",
 		"gitcommit",
 		"gitignore",
-    "markdown",
-    "rst",
+		"markdown",
+		"rst",
 		"json",
 		"toml",
 		"yaml",

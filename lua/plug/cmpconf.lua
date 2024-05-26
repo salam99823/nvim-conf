@@ -1,26 +1,18 @@
---[[
-    File: cmp.lua
-    Description: CMP plugin configuration (with lspconfig)
-    See: https://github.com/hrsh7th/nvim-cmp
-]]
-require("utils.aliases")
-
 local cmp = require("cmp")
-
 return {
 	window = {
 		border = "rounded",
+		completion = cmp.config.window.bordered(),
+		documentation = cmp.config.window.bordered(),
 	},
 	completion = {
 		border = "rounded",
 	},
-
 	snippet = {
 		expand = function(args)
 			require("luasnip").lsp_expand(args.body)
 		end,
 	},
-
 	mapping = {
 		["<Tab>"] = cmp.mapping.select_next_item(),
 		["<S-Tab>"] = cmp.mapping.select_prev_item(),
@@ -31,7 +23,6 @@ return {
 			select = true,
 		}),
 	},
-
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "nvim_lsp_signature_help" },

@@ -1,8 +1,3 @@
---[[
-    File: telescope.lua
-    Description: Telescope plugin configuration
-    See: https://github.com/nvim-telescope/telescope.nvim
-]]
 local telescope = require("telescope")
 telescope.setup({
 	extensions = {
@@ -56,4 +51,4 @@ telescope.load_extension("ui-select")
 telescope.load_extension("lazy")
 telescope.load_extension("dap")
 telescope.load_extension("fzy_native")
-telescope.load_extension('luasnip')
+telescope.load_extension("luasnip")

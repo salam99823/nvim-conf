@@ -1,29 +1,9 @@
---[[
-    File: lualine.lua
-    Description: Lualine plugin configuration
-    See: https://github.com/nvim-lualine/lualine.nvim
-]]
-local function active_lsp()
-	local buftype = Api.nvim_buf_get_option(0, "filetype")
-	local clients = Lsp.get_active_clients()
-	if next(clients) == nil then
-		return ""
-	end
-	for _, client in ipairs(clients) do
-		local filetypes = client.config.filetypes
-		if filetypes and Fn.index(filetypes, buftype) ~= -1 then
-			return client.name
-		end
-	end
-	return ""
-end
-
 return {
 	options = {
 		icons_enabled = true,
 		theme = "auto",
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
+		component_separators = { left = "", right = "" },
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = {
 			statusline = {},
 			winbar = {},
@@ -51,7 +31,20 @@ return {
 		},
 		lualine_c = {
 			{
-				active_lsp,
+				function()
+					local buftype = Api.nvim_buf_get_option(0, "filetype")
+					local clients = Lsp.get_active_clients()
+					if next(clients) == nil then
+						return ""
+					end
+					for _, client in ipairs(clients) do
+						local filetypes = client.config.filetypes
+						if filetypes and Fn.index(filetypes, buftype) ~= -1 then
+							return client.name
+						end
+					end
+					return ""
+				end,
 				on_click = function()
 					Cmd([[LspInfo]])
 				end,
@@ -101,11 +94,13 @@ return {
 		lualine_x = {},
 		lualine_y = {},
 		lualine_z = {
-			"datetime",
 			{
-				require("lazy.status").updates,
-				cond = require("lazy.status").has_updates,
-				color = { fg = "#ff9e64" },
+				"datetime",
+				style = "%A, %d %B",
+			},
+			{
+				"datetime",
+				style = "%T",
 			},
 		},
 	},
@@ -117,5 +112,6 @@ return {
 		"mason",
 		"nvim-dap-ui",
 		"neo-tree",
+		"toggleterm",
 	},
 }

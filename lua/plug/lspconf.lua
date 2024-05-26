@@ -1,29 +1,26 @@
---[[
-    File: lspconf.lua
-    Description: Mason-lspconfig plugin configuration
-    See: https://github.com/williamboman/mason-lspconfig.nvim
-]]
 local lspconfig = require("lspconfig")
-
-local handlers = {
-	function(server_name)
-		lspconfig[server_name].setup({})
-	end,
-	["lua_ls"] = function()
-		lspconfig.lua_ls.setup({
-			settings = {
-				Lua = {
-					diagnostics = {
-						globals = { "vim" },
-					},
-				},
-			},
-		})
-	end,
-}
+local capabilities = require("cmp_nvim_lsp").default_capabilities()
 
 return {
-	handlers = handlers,
+	handlers = {
+		function(server_name)
+			lspconfig[server_name].setup({
+				capabilities = capabilities,
+			})
+		end,
+		["lua_ls"] = function()
+			lspconfig.lua_ls.setup({
+				capabilities = capabilities,
+				settings = {
+					Lua = {
+						diagnostics = {
+							globals = { "vim" },
+						},
+					},
+				},
+			})
+		end,
+	},
 	ensure_installed = {
 		"tsserver",
 		"svelte",

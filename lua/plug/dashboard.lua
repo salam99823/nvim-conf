@@ -1,10 +1,6 @@
---[[
-    File: dashboard.lua
-    Description: Dashboard plugin configuration
-    See: http://github.com/nvimdev/dashboard-nvim
-]]
 return {
 	theme = "hyper",
+	shortcut_type = "number",
 	config = {
 		week_header = {
 			enable = true,

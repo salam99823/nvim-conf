@@ -1,8 +1,3 @@
---[[
-  File: neotree.lua
-  Description: Configuration of neo-tree
-  See: https://github.com/nvim-neo-tree/neo-tree.nvim
-]]
 return {
 	close_if_last_window = true,
 	default_component_configs = {

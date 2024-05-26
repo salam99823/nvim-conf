@@ -1,8 +1,3 @@
---[[
-    File: plugins.lua
-    Description: Plugin list
-    See: https://github.com/salam99823/nvim-conf
-]]
 return {
 	{
 		"nvim-lualine/lualine.nvim",
@@ -22,7 +17,16 @@ return {
 		dependencies = {
 			"MunifTanjim/nui.nvim",
 		},
-		opts = require("plug.monokai-pro"),
+		opts = {
+			background_clear = {
+				"float_win",
+				"toggleterm",
+				"telescope",
+				"neo-tree",
+				"bufferline",
+			},
+			filter = "machine",
+		},
 	},
 
 	{
@@ -50,26 +54,67 @@ return {
 	{
 		"mhartington/formatter.nvim",
 		config = function()
-			require("formatter").setup(require("plug.formatter"))
+			require("formatter").setup({
+				filetype = {
+					lua = {
+						require("formatter.filetypes.lua").stylua,
+					},
+					python = {
+						require("formatter.filetypes.python").ruff,
+					},
+					rust = require("formatter.filetypes.rust"),
+					markdown = {
+						require("formatter.filetypes.markdown").prettier,
+						require("formatter.filetypes.markdown").prettierd,
+					},
+					svelte = require("formatter.filetypes.svelte"),
+					css = require("formatter.filetypes.css"),
+					toml = require("formatter.filetypes.toml"),
+					pest = {
+						{
+							exe = "pestfmt",
+							args = {
+								"--stdin",
+							},
+							stdin = true,
+						},
+					},
+					yaml = require("formatter.filetypes.yaml"),
+					["*"] = require("formatter.filetypes.any"),
+				},
+			})
 		end,
 	},
 
 	{
-		"rcarriga/nvim-dap-ui",
+		"jay-babu/mason-nvim-dap.nvim",
 		dependencies = {
-			"jay-babu/mason-nvim-dap.nvim",
+			"rcarriga/nvim-dap-ui",
 			"mfussenegger/nvim-dap",
 			"nvim-neotest/nvim-nio",
 			{
 				"jonboh/nvim-dap-rr",
 				dependencies = {
-					"nvim-dap",
-					"telescope.nvim",
+					"nvim-telescope/telescope.nvim",
 				},
 			},
 		},
-		config = function()
-			require("plug.dap")
+		opts = {
+			ensure_installed = {
+				"python",
+				"codelldb",
+				"cppdbg",
+				"chrome",
+			},
+			handlers = {
+				function(config)
+					require("mason-nvim-dap").default_setup(config)
+				end,
+			},
+		},
+		config = function(opts)
+			require("mason-nvim-dap").setup(opts)
+			require("plug.dapconf")
 		end,
 	},
 
@@ -77,7 +122,15 @@ return {
 		"mfussenegger/nvim-lint",
 		lazy = true,
 		config = function()
-			require("plug.lint")
+			require("lint").linters_by_ft = {
+				markdown = {
+					"markdownlint",
+				},
+				python = {
+					"ruff",
+					"mypy",
+				},
+			}
 		end,
 	},
 
@@ -105,11 +158,11 @@ return {
 				"saecki/crates.nvim",
 				ft = "toml",
 				tag = "stable",
-				opts = require("plug.crates"),
+				opts = {},
 			},
 		},
 		config = function()
-			require("cmp").setup(require("plug.cmp"))
+			require("cmp").setup(require("plug.cmpconf"))
 		end,
 	},
 
@@ -118,7 +171,7 @@ return {
 		dependencies = {
 			"nvim-tree/nvim-web-devicons",
 		},
-		opts = require("plug.trouble"),
+		opts = {},
 	},
 
 	{
@@ -178,8 +231,13 @@ return {
 			"nvim-neotest/neotest-python",
 			"rouge8/neotest-rust",
 		},
-		config = function(plug)
-			plug.setup(require("plug.neotest"))
+		config = function()
+			require("neotest").setup({
+				adapters = {
+					require("neotest-python"),
+					require("neotest-rust"),
+				},
+			})
 		end,
 	},
 
@@ -220,7 +278,12 @@ return {
 
 	{
 		"akinsho/toggleterm.nvim",
-		opts = require("plug.toggleterm"),
+		opts = {
+			open_mapping = "<c-`>",
+			close_on_exit = true,
+			shell = vim.o.shell,
+			auto_scroll = true,
+		},
 	},
 
 	{

@@ -48,4 +48,4 @@ require("lazy").setup({
 require("neovide")
 require("bindings")
 
-Cmd.colorscheme("monokai-pro-classic")
+Cmd.colorscheme("monokai-pro")

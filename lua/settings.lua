@@ -1,8 +1,3 @@
---[[
-    File: settings.lua
-    Description: Base settings for neovim
-]]
-
 require("utils.aliases")
 
 -- Set association between turned on plugins and filetype
