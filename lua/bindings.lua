@@ -13,16 +13,9 @@ Nm("<leader>3", "<cmd>LualineBuffersJump 3<cr>")
 Nm("<leader>4", "<cmd>LualineBuffersJump 4<cr>")
 Nm("<leader>5", "<cmd>LualineBuffersJump 5<cr>")
 Nm("<leader>6", "<cmd>LualineBuffersJump 6<cr>")
-
-
-
-Api.nvim_create_user_command("TryLint", function(args)
-	require("lint").try_lint(args.fargs[0])
-end, {
-	nargs = 1,
-	complete = function(_, _, _)
-		local filetype = Api.nvim_buf_get_option(0, "filetype")
-		return require("lint").linters_by_ft[filetype]
-	end,
-	desc = "",
-})
+Nm("<leader>7", "<cmd>LualineBuffersJump 7<cr>")
+Nm("<leader>8", "<cmd>LualineBuffersJump 8<cr>")
+Nm("<leader>9", "<cmd>LualineBuffersJump 9<cr>")
+Nm("<leader>f", "<cmd>Format<cr>")
+Nm("<leader>F", "<cmd>FormatWrite<cr>")
+Nm("<esc>", "<cmd>nohlsearch<cr>")

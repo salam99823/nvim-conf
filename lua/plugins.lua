@@ -37,10 +37,18 @@ return {
 		},
 		opts = {
 			ui = {
+				check_outdated_packages_on_open = true,
 				border = "rounded",
+				width = 0.8,
+				height = 0.9,
+				icons = {
+					package_installed = "󰄳",
+					package_pending = "󰇚",
+					package_uninstalled = "󰝦",
+				},
 			},
 		},
-		config = function(opts)
+		config = function(_, opts)
 			require("mason").setup(opts)
 			require("mason-lspconfig").setup(require("plug.lspconf"))
 		end,
@@ -48,11 +56,13 @@ return {
 
 	{
 		"pest-parser/pest.vim",
+		ft = "pest",
 		opts = {},
 	},
 
 	{
 		"mhartington/formatter.nvim",
+		cmd = { "Format", "FormatWrite" },
 		config = function()
 			require("formatter").setup({
 				filetype = {
@@ -112,8 +122,9 @@ return {
 				end,
 			},
 		},
-		config = function(opts)
+		config = function(_, opts)
 			require("mason-nvim-dap").setup(opts)
+			require("dapui").setup()
 			require("plug.dapconf")
 		end,
 	},
@@ -131,6 +142,16 @@ return {
 					"mypy",
 				},
 			}
+			Api.nvim_create_user_command("TryLint", function(args)
+				require("lint").try_lint(args.fargs[0])
+			end, {
+				nargs = 1,
+				complete = function(_, _, _)
+					local filetype = Api.nvim_buf_get_option(0, "filetype")
+					return require("lint").linters_by_ft[filetype]
+				end,
+				desc = "",
+			})
 		end,
 	},
 
@@ -232,12 +253,7 @@ return {
 			"rouge8/neotest-rust",
 		},
 		config = function()
-			require("neotest").setup({
-				adapters = {
-					require("neotest-python"),
-					require("neotest-rust"),
-				},
-			})
+			require("neotest").setup(require("plug.neotestconf"))
 		end,
 	},
 
@@ -248,7 +264,17 @@ return {
 
 	{
 		"folke/neodev.nvim",
-		opts = require("plug.neodev"),
+		ft = "lua",
+		opts = {
+			library = {
+				enabled = true,
+				runtime = true,
+				types = true,
+				plugins = true,
+			},
+			setup_jsonls = true,
+			lspconfig = true,
+		},
 	},
 
 	{
@@ -269,14 +295,6 @@ return {
 	},
 
 	{
-		"akinsho/bufferline.nvim",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-		opts = {},
-	},
-
-	{
 		"akinsho/toggleterm.nvim",
 		opts = {
 			open_mapping = "<c-`>",
@@ -293,6 +311,7 @@ return {
 
 	{
 		"vxpm/ferris.nvim",
+		ft = "rust",
 		opts = {
 			create_commands = true,
 			url_handler = "xdg-open",

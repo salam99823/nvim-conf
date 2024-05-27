@@ -43,6 +43,14 @@ require("lazy").setup({
 			},
 		},
 	},
+	ui = {
+		border = "rounded",
+		pills = true,
+	},
+	checker = {
+		enabled = false,
+		notify = true,
+	},
 })
 
 require("neovide")

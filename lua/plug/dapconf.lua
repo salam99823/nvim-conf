@@ -1,17 +1,17 @@
+require("utils.binders")
 local dap = require("dap")
-vim.keymap.set("n", "<F1>", dap.terminate)
-vim.keymap.set("n", "<F6>", dap.toggle_breakpoint)
-vim.keymap.set("n", "<F7>", dap.continue)
-vim.keymap.set("n", "<F8>", dap.step_over)
-vim.keymap.set("n", "<F9>", dap.step_out)
-vim.keymap.set("n", "<F10>", dap.step_into)
-vim.keymap.set("n", "<F11>", dap.pause)
-vim.keymap.set("n", "<F56>", dap.down)
-vim.keymap.set("n", "<F57>", dap.up)
+Nm("<F5>", dap.terminate)
+Nm("<F6>", dap.toggle_breakpoint)
+Nm("<F7>", dap.continue)
+Nm("<F8>", dap.step_over)
+Nm("<F9>", dap.step_out)
+Nm("<F10>", dap.step_into)
+Nm("<F11>", dap.pause)
+Nm("<F56>", dap.down)
+Nm("<F57>", dap.up)
 local rr_dap = require("nvim-dap-rr")
 rr_dap.setup({
 	mappings = {
-
 		continue = "<F7>",
 		step_over = "<F8>",
 		step_out = "<F9>",
@@ -20,7 +20,6 @@ rr_dap.setup({
 		reverse_step_over = "<F20>",
 		reverse_step_out = "<F21>",
 		reverse_step_into = "<F22>",
-
 		step_over_i = "<F32>",
 		step_out_i = "<F33>",
 		step_into_i = "<F34>",
@@ -35,3 +34,24 @@ dap.configurations.rust = {
 dap.configurations.cpp = {
 	rr_dap.get_config(),
 }
+dap.configurations.python = {
+	{
+		type = "python",
+		request = "launch",
+		name = "Launch file",
+		program = "${file}",
+	},
+}
+local dapui = require("dapui")
+dap.listeners.before.attach.dapui_config = function()
+	dapui.open()
+end
+dap.listeners.before.launch.dapui_config = function()
+	dapui.open()
+end
+dap.listeners.before.event_terminated.dapui_config = function()
+	dapui.close()
+end
+dap.listeners.before.event_exited.dapui_config = function()
+	dapui.close()
+end
