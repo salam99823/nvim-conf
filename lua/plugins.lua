@@ -62,7 +62,10 @@ return {
 
 	{
 		"mhartington/formatter.nvim",
-		cmd = { "Format", "FormatWrite" },
+		cmd = {
+			"Format",
+			"FormatWrite",
+		},
 		config = function()
 			require("formatter").setup({
 				filetype = {
@@ -206,7 +209,13 @@ return {
 			"benfowler/telescope-luasnip.nvim",
 		},
 		config = function()
-			require("plug.telescope")
+			local telescope = require("telescope")
+			telescope.setup(require("plug.telescopeconf"))
+			telescope.load_extension("ui-select")
+			telescope.load_extension("lazy")
+			telescope.load_extension("dap")
+			telescope.load_extension("fzy_native")
+			telescope.load_extension("luasnip")
 		end,
 	},
 
@@ -223,11 +232,6 @@ return {
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		dependencies = {
-			{
-				"windwp/nvim-ts-autotag",
-				event = "InsertEnter",
-				opts = {},
-			},
 			{
 				"windwp/nvim-autopairs",
 				event = "InsertEnter",
@@ -264,7 +268,6 @@ return {
 
 	{
 		"folke/neodev.nvim",
-		ft = "lua",
 		opts = {
 			library = {
 				enabled = true,

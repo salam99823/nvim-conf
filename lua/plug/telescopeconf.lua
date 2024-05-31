@@ -1,5 +1,4 @@
-local telescope = require("telescope")
-telescope.setup({
+return {
 	extensions = {
 		["ui-select"] = {
 			require("telescope.themes").get_dropdown({}),
@@ -45,10 +44,4 @@ telescope.setup({
 			cwd_only = true,
 		},
 	},
-})
-
-telescope.load_extension("ui-select")
-telescope.load_extension("lazy")
-telescope.load_extension("dap")
-telescope.load_extension("fzy_native")
-telescope.load_extension("luasnip")
+}

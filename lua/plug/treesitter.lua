@@ -28,9 +28,6 @@ return {
 		"xml",
 	},
 	sync_install = false,
-	autotag = {
-		enable = true,
-	},
 	highlight = {
 		enable = true,
 		disable = {},

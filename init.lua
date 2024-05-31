@@ -55,5 +55,11 @@ require("lazy").setup({
 
 require("neovide")
 require("bindings")
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = "svelte",
+	callback = function(args)
+		vim.treesitter.start(args.buf, "svelte")
+	end,
+})
 
 Cmd.colorscheme("monokai-pro")
