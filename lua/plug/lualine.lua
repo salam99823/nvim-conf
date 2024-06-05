@@ -23,7 +23,9 @@ return {
 			{
 				"diagnostics",
 				on_click = function()
-					Cmd([[TroubleToggle]])
+					require("trouble").toggle({
+						mode = "document",
+					})
 				end,
 				always_visible = true,
 			},
@@ -78,10 +80,7 @@ return {
 		lualine_a = {
 			{
 				"buffers",
-				use_mode_colors = true,
-				filetype_names = {
-					toggleterm = "zsh",
-				},
+				use_mode_colors = false,
 			},
 		},
 		lualine_b = {
