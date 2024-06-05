@@ -80,7 +80,9 @@ return {
 						require("formatter.filetypes.markdown").prettier,
 						require("formatter.filetypes.markdown").prettierd,
 					},
-					svelte = require("formatter.filetypes.svelte"),
+					svelte = {
+						require("formatter.filetypes.svelte").prettier,
+					},
 					css = require("formatter.filetypes.css"),
 					toml = require("formatter.filetypes.toml"),
 					pest = {
