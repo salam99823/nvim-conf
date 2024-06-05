@@ -238,10 +238,6 @@ return {
 				opts = {},
 			},
 		},
-		event = {
-			"BufReadPost",
-			"BufNewFile",
-		},
 		opts = require("plug.treesitter"),
 	},
 
