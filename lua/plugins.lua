@@ -80,9 +80,7 @@ return {
 						require("formatter.filetypes.markdown").prettier,
 						require("formatter.filetypes.markdown").prettierd,
 					},
-					svelte = {
-						require("formatter.filetypes.svelte").prettier,
-					},
+					svelte = require("formatter.filetypes.svelte"),
 					css = require("formatter.filetypes.css"),
 					toml = require("formatter.filetypes.toml"),
 					pest = {
@@ -94,6 +92,7 @@ return {
 							stdin = true,
 						},
 					},
+					json = require("formatter.filetypes.json").biome,
 					yaml = require("formatter.filetypes.yaml"),
 					["*"] = require("formatter.filetypes.any"),
 				},
