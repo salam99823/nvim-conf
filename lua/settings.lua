@@ -1,4 +1,5 @@
-require("utils.aliases")
+local Cmd = vim.cmd -- Command function
+local Opt = vim.opt -- Vim optionals
 
 -- Set association between turned on plugins and filetype
 Cmd([[filetype plugin on]])
@@ -12,7 +13,7 @@ Opt.relativenumber = true
 Opt.cursorline = true
 Opt.scrolloff = 10
 Opt.colorcolumn = "80"
-Opt.shell = "/bin/zsh"
+Opt.shell = "zsh"
 
 -- Tabs {{{
 Opt.expandtab = true -- Use spaces by default

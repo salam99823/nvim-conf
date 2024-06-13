@@ -1,23 +1,20 @@
-require("utils.aliases")
-require("utils.binders")
+local function Nm(key, command) -- Normal mode keybinding setter
+	vim.keymap.set("n", key, command, { noremap = true })
+end
+local function Im(key, command) -- Input mode keybinding setter
+	vim.keymap.set("i", key, command, { noremap = true })
+end
+local function Vm(key, command) -- Visual mode keybinding setter
+	vim.keymap.set("v", key, command, { noremap = true })
+end
+local function Tm(key, command) -- Terminal mode keybinding setter
+	vim.keymap.set("t", key, command, { noremap = true })
+end
+local function Um(mode, key, callback) -- Utility map
+	vim.keymap.set(mode, key, callback, { noremap = true, expr = true })
+end
 
 Im("jk", "<esc>")
-Nm("<leader>v", "<cmd>Neotree filesystem left toggle dir=./<cr>")
-Nm("<leader><Tab>", "<cmd>Neotree buffers left toggle dir=./<cr>")
 Nm("<leader>bn", "<cmd>bn<cr>")
 Nm("<leader>bp", "<cmd>bp<cr>")
-Nm("<leader>t", function()
-	require("trouble").toggle({ mode = "document" })
-end)
-Nm("<leader>1", "<cmd>LualineBuffersJump 1<cr>")
-Nm("<leader>2", "<cmd>LualineBuffersJump 2<cr>")
-Nm("<leader>3", "<cmd>LualineBuffersJump 3<cr>")
-Nm("<leader>4", "<cmd>LualineBuffersJump 4<cr>")
-Nm("<leader>5", "<cmd>LualineBuffersJump 5<cr>")
-Nm("<leader>6", "<cmd>LualineBuffersJump 6<cr>")
-Nm("<leader>7", "<cmd>LualineBuffersJump 7<cr>")
-Nm("<leader>8", "<cmd>LualineBuffersJump 8<cr>")
-Nm("<leader>9", "<cmd>LualineBuffersJump 9<cr>")
-Nm("<leader>f", "<cmd>Format<cr>")
-Nm("<leader>F", "<cmd>FormatWrite<cr>")
 Nm("<esc>", "<cmd>nohlsearch<cr>")
