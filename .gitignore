@@ -39,8 +39,11 @@ luac.out
 *.x86_64
 *.hex
 
-# ---
-lazy-lock.json
-package-lock.json
-.vscode/
-.idea/
+tt.*
+.tests
+doc/tags
+debug
+.repro
+foo.*
+*.log
+data
