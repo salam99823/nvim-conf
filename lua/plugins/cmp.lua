@@ -22,8 +22,8 @@ return {
         "David-Kunz/cmp-npm",
         dependencies = { "nvim-lua/plenary.nvim" },
         ft = "json",
-        config = function()
-          require("cmp-npm").setup({})
+        config = function(_, opts)
+          require("cmp-npm").setup(opts)
         end,
       },
     },
