@@ -36,13 +36,11 @@ return {
         "nvim_lua",
         {
           "emoji",
-          keyword_length = 3,
-          group_index = 3,
+          group_index = 2,
         },
         {
           "nerdfont",
-          keyword_length = 3,
-          group_index = 3,
+          group_index = 2,
         },
       })
       for _, source in ipairs(sources) do
