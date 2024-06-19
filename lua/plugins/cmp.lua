@@ -48,19 +48,8 @@ return {
           group_index = 2,
         },
       })
-      for _, source in ipairs(sources) do
-        table.insert(opts.sources, source)
-      end
+      opts.sources = vim.list_extend(opts.sources, sources)
       return opts
-    end,
-    ---@param self LazyPlugin
-    ---@param opts cmp.ConfigSchema
-    config = function(self, opts)
-      utils
-        .super(self, function(plugin)
-          return not vim.is_callable(plugin.config)
-        end)
-        .config(self, opts)
     end,
   },
 }
