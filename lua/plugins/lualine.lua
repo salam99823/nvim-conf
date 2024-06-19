@@ -1,10 +1,19 @@
----@type LazyPluginSpec[]
+---@module "lazy"
+---@module "lualine"
+
+---@type LazySpec[]
 return {
   {
     "nvim-lualine/lualine.nvim",
+    ---@param _ LazyPlugin
+    ---@param opts table
+    ---@return table
     opts = function(_, opts)
+      opts = opts or {}
+      opts.options = opts.options or {}
       opts.options.component_separators = { left = "", right = "" }
       opts.options.section_separators = { left = "", right = "" }
+      opts.sections = opts.sections or { lualine_a = {}, lualine_z = {} }
       opts.sections.lualine_a[1] = {
         "mode",
         separator = { left = "", right = "" },

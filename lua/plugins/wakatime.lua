@@ -1,7 +1,9 @@
----@type LazyPluginSpec[]
+---@module "lazy"
+
+---@type LazySpec[]
 return {
   {
-    'wakatime/vim-wakatime',
-    lazy = false
-  }
+    "wakatime/vim-wakatime",
+    lazy = false,
+  },
 }

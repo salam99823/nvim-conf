@@ -1,6 +1,9 @@
+---@module "lazy"
+---@module "cmp"
+
 local utils = require("utils")
 
----@type LazyPluginSpec[]
+---@type LazySpec[]
 return {
   {
     "hrsh7th/nvim-cmp",
@@ -20,14 +23,16 @@ return {
       },
       {
         "David-Kunz/cmp-npm",
-        dependencies = { "nvim-lua/plenary.nvim" },
+        dependencies = "nvim-lua/plenary.nvim",
         ft = "json",
         config = function(_, opts)
           require("cmp-npm").setup(opts)
         end,
       },
     },
-    ---@param opts cmp.ConfigSchema
+    ---@param _ LazyPlugin
+    ---@param opts conform.setupOpts
+    ---@return conform.setupOpts
     opts = function(_, opts)
       local sources = utils.sources({
         "nvim_lsp_signature_help",
