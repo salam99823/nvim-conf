@@ -12,7 +12,6 @@ return {
       opts = opts or {}
       opts.ensure_installed = vim.list_extend(opts.ensure_installed or {}, {
         "css",
-        "rst",
       })
       return opts
     end,

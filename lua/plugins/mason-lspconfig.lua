@@ -6,7 +6,7 @@ return {
   {
     "williamboman/mason-lspconfig.nvim",
     ---@param _ LazyPlugin
-    ---@param opts MasonLspconfigSettings?
+    ---@param opts MasonLspconfigSettings
     ---@return MasonLspconfigSettings
     opts = function(_, opts)
       opts = opts or {}
@@ -17,15 +17,10 @@ return {
         "cssls",
         "lua_ls",
         "pylsp",
-        "ruff",
-        "rust_analyzer",
-        "clangd",
-        "cmake",
         "lemminx",
         "biome",
         "taplo",
         "hydra_lsp",
-        "vimls",
       })
       return opts
     end,
